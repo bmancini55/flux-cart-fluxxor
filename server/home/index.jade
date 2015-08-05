@@ -5,7 +5,19 @@ head
   link(rel="stylesheet" href="/public/libs/bootstrap/dist/css/bootstrap.min.css")
   link(rel="stylesheet" href="/public/css/app.css")
 body
-  .container
+  nav.navbar.navbar-default.navbar-fixed-top
+    .container
+      .navbar-header
+        button.navbar-toggle.collapsed(type='button' data-toggle='collapse' data-target='#navbar')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+      #navbar.navbar-collapse.collapse
+      ul.nav.navbar-nav.navbar-right
+        li#cart
+
+
+  .container.page-contents
     section#shop-items
       .row
         h1 Items
@@ -23,5 +35,4 @@ body
           if idx % 4 == 3
             .clearfix.visible-md
 
-  section#react
   script(src="/public/js/bundle.js")

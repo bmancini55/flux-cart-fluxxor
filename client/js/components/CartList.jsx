@@ -4,7 +4,8 @@ var React = require('react');
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin("CartStore");
 
-var CartApp = React.createClass({
+var CartItem = require('./CartItem.jsx');
+var CartList = React.createClass({
 
   mixins: [FluxMixin, StoreWatchMixin],
 
@@ -23,22 +24,15 @@ var CartApp = React.createClass({
 
   render: function() {
     var items = this.state.items;
-    var count = Object.keys(items).length;
     return (
-      <a href="#" onClick={this.onCartClick}>
-        <span className="glyphicon glyphicon-shopping-cart"></span>
-        <span>&nbsp;</span>
-        <span>{count} items</span>
-      </a>
+      <ul className="cart-items">
+        {Object.keys(items).map(function(id) {
+          return <li key={id} className="cart-item"><CartItem key={id} item={items[id]} /></li>;
+        })}
+      </ul>
     );
-  },
-
-  onCartClick: function(e) {
-    e.preventDefault();
-    console.log('load the modal');
   }
 
 });
-
 
 module.exports = CartApp;

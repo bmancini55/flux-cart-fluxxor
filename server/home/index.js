@@ -1,6 +1,6 @@
 let express = require('express');
-let app = express();
-let items = require('server/home/items');
+let app     = express();
+let items   = require('server/home/items');
 
 app.set('view engine', 'jade');
 app.set('views', __dirname);

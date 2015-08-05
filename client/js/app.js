@@ -17,5 +17,5 @@ window.CartApp = flux;
 
 React.render(
   <CartApp flux={flux} />,
-  document.getElementById('react')
+  document.getElementById('cart')
 );
