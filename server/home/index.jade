@@ -1,0 +1,27 @@
+html(lang="en")
+head
+  meta(charset="utf8")
+  title Flux Cart
+  link(rel="stylesheet" href="/public/libs/bootstrap/dist/css/bootstrap.min.css")
+  link(rel="stylesheet" href="/public/css/app.css")
+body
+  .container
+    section#shop-items
+      .row
+        h1 Items
+      .row.shop-item-list
+        each item, idx in items
+          .shop-item.col-md-3.col-sm-4.col-xs-6
+            img.img-responsive.shop-item-img(src=item.imagePath)
+            h3.shop-item-title= item.title
+            p.shop-item-subtitle= item.publisher
+            button(onclick='CartApp.actions.addItem(' + JSON.stringify(item) + ')') Add to Cart
+          if idx % 2 == 1
+            .clearfix.visible-xs
+          if idx % 3 == 2
+            .clearfix.visible-sm
+          if idx % 4 == 3
+            .clearfix.visible-md
+
+  section#react
+  script(src="/public/js/bundle.js")
