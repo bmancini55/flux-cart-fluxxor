@@ -17,6 +17,19 @@ var CartStore = Fluxxor.createStore({
     );
   },
 
+  getQty: function() {
+    var items = this.items;
+    return  Object
+      .keys(this.items)
+      .map(function(key) {
+        var item = items[key];
+        return item.qty;
+      })
+      .reduce(function(pre, cur) {
+        return pre + cur;
+      }, 0);
+  },
+
   onCartLoad: function() {
     this.loading = true;
     this.emit('change');
@@ -29,18 +42,30 @@ var CartStore = Fluxxor.createStore({
   },
 
   onAddItem: function(item) {
-    this.items[item.id] = item;
+    if(!this.items[item.id]) {
+      this.items[item.id] = item;
+    }
+
+    if(!this.items[item.id].qty) {
+      this.items[item.id].qty = 0;
+    }
+
+    this.items[item.id].qty += 1;
     this.emit('change');
   },
 
   onRemoveItem: function(id) {
-    delete this.items[id];
+    this.items[id].qty -= 1;
+    if(this.items[id].qty === 0) {
+      delete this.items[id];
+    }
     this.emit('change');
   },
 
   getState: function() {
     return {
-      items: this.items
+      items: this.items,
+      qty: this.getQty()
     };
   }
 

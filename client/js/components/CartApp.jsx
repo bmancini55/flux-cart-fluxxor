@@ -23,7 +23,7 @@ var CartApp = React.createClass({
 
   render: function() {
     var items = this.state.items;
-    var count = Object.keys(items).length;
+    var count = this.state.qty;
     return (
       <a href="#" onClick={this.onCartClick}>
         <span className="glyphicon glyphicon-shopping-cart"></span>
