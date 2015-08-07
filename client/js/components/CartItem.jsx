@@ -1,14 +1,15 @@
 
 var Fluxxor = require('fluxxor');
 var React = require('react');
-var FluxMixin = Fluxxor.FluxMixin(React);
 
 var CartItem = React.createClass({
 
-  mixins: [FluxMixin],
-
   propTypes: {
     item: React.PropTypes.object.isRequired
+  },
+
+  getFlux: function() {
+    return this.props.flux;
   },
 
   render: function() {

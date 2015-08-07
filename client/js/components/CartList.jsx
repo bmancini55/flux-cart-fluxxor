@@ -1,33 +1,21 @@
 
 var Fluxxor = require('fluxxor');
 var React = require('react');
-var FluxMixin = Fluxxor.FluxMixin(React);
-var StoreWatchMixin = Fluxxor.StoreWatchMixin("CartStore");
 
 var CartItem = require('./CartItem.jsx');
 var CartList = React.createClass({
 
-  mixins: [FluxMixin, StoreWatchMixin],
-
-  getInitialState: function () {
-    return {};
-  },
-
-  getStateFromFlux: function () {
-    var flux = this.getFlux();
-    return flux.store('CartStore').getState();
-  },
-
-  componentDidMount: function() {
-    this.getFlux().actions.loadCart();
+  propTypes: {
+    items: React.PropTypes.object.isRequired
   },
 
   render: function() {
-    var items = this.state.items;
+    var flux = this.props.flux;
+    var items = this.props.items;
     return (
       <ul className="cart-items">
         {Object.keys(items).map(function(id) {
-          return <li key={id} className="cart-item"><CartItem key={id} item={items[id]} /></li>;
+          return <li key={id} className="cart-item"><CartItem key={id} item={items[id]} flux={flux} /></li>;
         })}
       </ul>
     );
@@ -35,4 +23,4 @@ var CartList = React.createClass({
 
 });
 
-module.exports = CartApp;
+module.exports = CartList;

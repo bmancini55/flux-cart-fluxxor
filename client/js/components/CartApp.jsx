@@ -2,11 +2,16 @@
 var Fluxxor = require('fluxxor');
 var React = require('react');
 var FluxMixin = Fluxxor.FluxMixin(React);
-var StoreWatchMixin = Fluxxor.StoreWatchMixin("CartStore");
+var WatchCartStore = Fluxxor.StoreWatchMixin("CartStore");
+
+var Modal = require('react-bootstrap').Modal;
+var Button = require('react-bootstrap').Button;
+
+var CartList = require('./CartList.jsx');
 
 var CartApp = React.createClass({
 
-  mixins: [FluxMixin, StoreWatchMixin],
+  mixins: [FluxMixin, WatchCartStore],
 
   getInitialState: function () {
     return {};
@@ -21,7 +26,16 @@ var CartApp = React.createClass({
     this.getFlux().actions.loadCart();
   },
 
+  close: function() {
+    this.setState({ showModal: false });
+  },
+
+  open: function() {
+    this.setState({ showModal: true });
+  },
+
   render: function() {
+    var flux = this.getFlux();
     var items = this.state.items;
     var count = this.state.qty;
     return (
@@ -29,13 +43,25 @@ var CartApp = React.createClass({
         <span className="glyphicon glyphicon-shopping-cart"></span>
         <span>&nbsp;</span>
         <span>{count} items</span>
+
+        <Modal show={this.state.showModal} onHide={this.close}>
+          <Modal.Header closeButton>
+            <Modal.Title>Shopping Cart</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <CartList items={items} flux={flux}></CartList>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.close}>Close</Button>
+          </Modal.Footer>
+        </Modal>
       </a>
     );
   },
 
   onCartClick: function(e) {
     e.preventDefault();
-    console.log('load the modal');
+    this.open();
   }
 
 });
