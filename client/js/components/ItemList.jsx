@@ -7,15 +7,27 @@ let ItemListItem = require('./ItemListItem.jsx');
 let ItemList = React.createClass({
 
   mixins: [
-    Fluxxor.FluxMixin(React)
+    Fluxxor.FluxMixin(React),
+    Fluxxor.StoreWatchMixin('ItemStore')
   ],
 
-  propTypes: {
-    items: React.PropTypes.object.isRequired
+  getInitialState: function () {
+    return {};
+  },
+
+  getStateFromFlux: function () {
+    let flux = this.getFlux();
+    return {
+      items: flux.store('ItemStore').getState()
+    };
+  },
+
+  componentDidMount: function() {
+    this.getFlux().actions.item.loadItems();
   },
 
   render: function() {
-    let items = this.props.items;
+    let items = this.state.items.items;
     return (
       <div className="row shop-item-list">
         {
