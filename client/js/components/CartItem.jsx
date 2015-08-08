@@ -4,12 +4,12 @@ var React = require('react');
 
 var CartItem = React.createClass({
 
+  mixins: [
+    Fluxxor.FluxMixin(React)
+  ],
+
   propTypes: {
     item: React.PropTypes.object.isRequired
-  },
-
-  getFlux: function() {
-    return this.props.flux;
   },
 
   render: function() {
@@ -25,7 +25,7 @@ var CartItem = React.createClass({
   },
 
   onRemoveClick: function() {
-    this.getFlux().actions.removeItem(this.props.item.id);
+    this.getFlux().actions.cart.removeItem(this.props.item.id);
   }
 
 });

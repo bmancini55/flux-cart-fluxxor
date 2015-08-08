@@ -1,21 +1,12 @@
 
-var React = require('react');
-var Fluxxor = require('fluxxor');
-
-var CartStore = require('./stores/CartStore');
-var CartActions = require('./actions/CartActions');
-var CartApp = require('./components/CartApp.jsx');
-
-var stores = {
-  CartStore: new CartStore()
-};
-
-var flux = new Fluxxor.Flux(stores, CartActions);
-
-// expose to window for non-flux interaction
-window.CartApp = flux;
+let React   = require('react');
+let Fluxxor = require('fluxxor');
+let stores  = require('./stores');
+let actions = require('./actions');
+let flux    = new Fluxxor.Flux(stores, actions);
+let App     = window.App = require('./components/App.jsx');
 
 React.render(
-  <CartApp flux={flux} />,
-  document.getElementById('cart')
+  <App flux={flux} />,
+  document.getElementById('app')
 );

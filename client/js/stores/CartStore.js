@@ -10,8 +10,6 @@ var CartStore = Fluxxor.createStore({
     this.items = {};
 
     this.bindActions(
-      CartConstants.CART_LOAD, this.onCartLoad,
-      CartConstants.CART_LOAD_SUCCESS, this.onCartLoadSuccess,
       CartConstants.CART_ADD_ITEM, this.onAddItem,
       CartConstants.CART_REMOVE_ITEM, this.onRemoveItem
     );
@@ -28,17 +26,6 @@ var CartStore = Fluxxor.createStore({
       .reduce(function(pre, cur) {
         return pre + cur;
       }, 0);
-  },
-
-  onCartLoad: function() {
-    this.loading = true;
-    this.emit('change');
-  },
-
-  onCartLoadSuccess: function(results) {
-    this.loading = false;
-    this.items = results.items;
-    this.emit('change');
   },
 
   onAddItem: function(item) {
