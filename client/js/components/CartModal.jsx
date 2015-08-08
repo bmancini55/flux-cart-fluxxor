@@ -34,7 +34,7 @@ let CartModal = React.createClass({
   render: function() {
     let cart = this.state.cart;
     return (
-      <a href="#" onClick={this.onCartClick}>
+      <div onClick={this.onCartClick}>
         <span className="glyphicon glyphicon-shopping-cart"></span>
         <span>&nbsp;</span>
         <span>{cart.qty} items</span>
@@ -50,7 +50,7 @@ let CartModal = React.createClass({
             <Button onClick={this.close}>Close</Button>
           </Modal.Footer>
         </Modal>
-      </a>
+      </div>
     );
   },
 

@@ -6,6 +6,8 @@ let React     = require('react');
 let ItemList  = require('./ItemList.jsx');
 let CartModal = require('./CartModal.jsx');
 
+let Bootstrap = require('react-bootstrap');
+let { Navbar, CollapsibleNav, Nav, NavItem } = Bootstrap;
 
 let App = React.createClass({
 
@@ -16,25 +18,13 @@ let App = React.createClass({
   render: function() {
     return (
       <div>
-        <nav className="navbar navbar-default navbar-fixed-top">
-          <div className="container">
-            <div className="navbar-header">
-              <button className="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar">
-                <span className="src-only">Toggle navigation</span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-              </button>
-            </div>
-            <div className="navbar-collapse collapse" id="navbar">
-              <ul className="nav navbar-nav navbar-right">
-                <li>
-                  <CartModal />
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+        <Navbar toggleNavKey="navbar">
+          <CollapsibleNav eventKey="navbar">
+            <Nav navbar right>
+              <NavItem><CartModal /></NavItem>
+            </Nav>
+          </CollapsibleNav>
+        </Navbar>
         <div className="container page-contents">
           <section id="shop-items">
             <div className="row">
