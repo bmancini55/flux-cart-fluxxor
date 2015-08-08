@@ -1,13 +1,13 @@
 
-var CartConstants = require('../constants/CartConstants');
+// cart_add_item
+// cart_remove_item
 
 module.exports = {
   addItem: function(item) {
-    this.dispatch(CartConstants.CART_ADD_ITEM, item);
+    this.dispatch('cart_add_item', item);
   },
 
   removeItem: function(id) {
-    this.dispatch(CartConstants.CART_REMOVE_ITEM, id );
+    this.dispatch('cart_remove_item', id );
   }
-
 };

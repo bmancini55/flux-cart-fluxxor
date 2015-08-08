@@ -85,9 +85,7 @@ let App = React.createClass({
             <div className="row">
               <h1>Items</h1>
             </div>
-            <div className="row shop-item-list">
-              <ItemList items={items} />
-            </div>
+            <ItemList items={items} />
           </section>
         </div>
       </div>

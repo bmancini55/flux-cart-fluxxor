@@ -1,6 +1,5 @@
 
 var Fluxxor = require('fluxxor');
-var CartConstants = require('../constants/CartConstants');
 
 var CartStore = Fluxxor.createStore({
 
@@ -10,8 +9,8 @@ var CartStore = Fluxxor.createStore({
     this.items = {};
 
     this.bindActions(
-      CartConstants.CART_ADD_ITEM, this.onAddItem,
-      CartConstants.CART_REMOVE_ITEM, this.onRemoveItem
+      'cart_add_item', this.onAddItem,
+      'cart_remove_item', this.onRemoveItem
     );
   },
 
