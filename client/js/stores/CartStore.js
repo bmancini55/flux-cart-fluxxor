@@ -44,10 +44,7 @@ let CartStore = Fluxxor.createStore({
   },
 
   onRemoveItem: function(id) {
-    this.items[id].qty -= 1;
-    if(this.items[id].qty === 0) {
-      delete this.items[id];
-    }
+    delete this.items[id];
     this.emit('change');
   },
 
