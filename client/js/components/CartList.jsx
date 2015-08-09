@@ -13,11 +13,19 @@ var CartList = React.createClass({
     var flux = this.props.flux;
     var items = this.props.cart.items;
     return (
-      <ul className="cart-items">
-        {Object.keys(items).map(function(id) {
-          return <li key={id} className="cart-item"><CartItem key={id} item={items[id]} flux={flux} /></li>;
-        })}
-      </ul>
+      <div className="cart-items">
+        {() => {
+          let results = [];
+          let keys    = Object.keys(items);
+
+          if(keys.length === 0)
+            results.push(<p>No items in cart</p>);
+          else
+            results = keys.map((id) => <CartItem item={items[id]} flux={flux} />);
+
+          return results;
+        }()}
+      </div>
     );
   }
 

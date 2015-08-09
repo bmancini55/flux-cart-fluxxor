@@ -15,11 +15,36 @@ var CartItem = React.createClass({
   render: function() {
     var item = this.props.item;
     return (
-      <div>
-        <span className="item-id">{item.id}</span>
-        <span className="item-title">{item.title}</span>
-        <span className="item-price">{item.price}</span>
-        <button onClick={this.onRemoveClick}>Remove</button>
+      <div className="cart-item">
+        <table className="cart-item-container">
+          <tr>
+            <td className="cart-item-img">
+              <img className="img-responsive item-img" src={item.imagePath} />
+            </td>
+            <td className="cart-item-data">
+              <table className="cart-item-details">
+                <tr>
+                  <td className="cart-item-details-header">{item.title}</td>
+                  <td className="cart-item-delete">
+                    <button onClick={this.onRemoveClick}>Remove</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="cart-item-details-info" colspan="2">
+                    <div className="cart-item-info cart-item-id">
+                      <div className="info-label">Item</div>
+                      <div className="info-value">{item.id}</div>
+                    </div>
+                    <div className="cart-item-info cart-item-price">
+                      <div className="info-label">Price</div>
+                      <div className="info-value">{item.price}</div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
       </div>
     );
   },

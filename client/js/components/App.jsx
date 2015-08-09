@@ -26,12 +26,10 @@ let App = React.createClass({
           </CollapsibleNav>
         </Navbar>
         <div className="container page-contents">
-          <section id="shop-items">
-            <div className="row">
-              <h1>Items</h1>
-            </div>
-            <ItemList />
-          </section>
+          <div className="row">
+            <h1>Items</h1>
+          </div>
+          <ItemList />
         </div>
       </div>
     );
