@@ -26,7 +26,10 @@ var CartItem = React.createClass({
                 <tr>
                   <td className="cart-item-details-header">{item.title}</td>
                   <td className="cart-item-delete">
-                    <button onClick={this.onRemoveClick}>Remove</button>
+                    <span
+                      className="glyphicon glyphicon-remove"
+                      onClick={this.onRemoveClick}
+                    />
                   </td>
                 </tr>
                 <tr>

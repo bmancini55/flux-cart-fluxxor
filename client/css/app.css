@@ -111,6 +111,16 @@
 }
 
 .cart-item-delete {
+  padding-top: .25rem;
+  vertical-align: top;
+  font-size: 1.1rem;
+  color: #999;
+}
+.cart-item-delete span:hover {
+  color: #ee3333;
+}
+
+.cart-item-delete {
   text-align: right;
 }
 

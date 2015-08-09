@@ -21,7 +21,7 @@ var CartList = React.createClass({
           if(keys.length === 0)
             results.push(<p>No items in cart</p>);
           else
-            results = keys.map((id) => <CartItem item={items[id]} flux={flux} />);
+            results = keys.map((id) => <CartItem key={id} item={items[id]} flux={flux} />);
 
           return results;
         }()}
