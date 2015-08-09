@@ -4,7 +4,8 @@
   "description": "Flux shopping cart",
   "main": "js/app.js",
   "scripts": {
-    "start": "watchify -o client/js/bundle.js -v -d client/js/app.js"
+    "watch": "watchify -o client/js/bundle.js -v -d client/js/app.js",
+    "start": "NODE_PATH=./ node index.js"
   },
   "author": "Brian Mancini <bmancini@gmail.com>",
   "license": "MIT",
