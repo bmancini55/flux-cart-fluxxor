@@ -19,14 +19,14 @@ let CartStore = Fluxxor.createStore({
   getQty: function() {
     var items = _.values(this.items);
     return items
-      .map((item) => item.qty)
+      .map((item) => parseInt(item.qty) || 0)
       .reduce((pre, cur) => pre + cur, 0);
   },
 
   getSubTotal: function() {
     let items = _.values(this.items);
     return items
-      .map((item) => item.qty * item.price)
+      .map((item) => (parseInt(item.qty) || 0) * item.price)
       .reduce((pre, cur) => pre + cur, 0);
   },
 
@@ -49,10 +49,9 @@ let CartStore = Fluxxor.createStore({
   },
 
   onUpdateQty: function({ id, qty }) {
-    this.items[id].qty = qty;
-    if(this.items[id].qty === 0) {
-      delete this.items[id];
-    }
+    let item = this.items[id];
+    item.qtyInvalid = isNaN(parseInt(qty));
+    item.qty        = qty;
     this.emit('change');
   },
 
