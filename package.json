@@ -1,5 +1,5 @@
 {
-  "name": "flux-cart",
+  "name": "flux-cart-fluxxor",
   "version": "0.1.0",
   "description": "Flux shopping cart",
   "main": "js/app.js",

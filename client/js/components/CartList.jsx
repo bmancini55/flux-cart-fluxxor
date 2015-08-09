@@ -1,17 +1,15 @@
 
-var Fluxxor = require('fluxxor');
-var React = require('react');
+let React = require('react');
 
-var CartItem = require('./CartItem.jsx');
-var CartList = React.createClass({
+let CartItem = require('./CartItem.jsx');
+let CartList = React.createClass({
 
   propTypes: {
     cart: React.PropTypes.object.isRequired
   },
 
   render: function() {
-    var flux = this.props.flux;
-    var items = this.props.cart.items;
+    let items = this.props.cart.items;
     return (
       <div className="cart-items">
         {() => {
@@ -21,7 +19,7 @@ var CartList = React.createClass({
           if(keys.length === 0)
             results.push(<p>No items in cart</p>);
           else
-            results = keys.map((id) => <CartItem key={id} item={items[id]} flux={flux} />);
+            results = keys.map((id) => <CartItem key={id} item={items[id]} />);
 
           return results;
         }()}

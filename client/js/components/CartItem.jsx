@@ -1,8 +1,8 @@
 
-var Fluxxor = require('fluxxor');
-var React = require('react');
+let Fluxxor = require('fluxxor');
+let React = require('react');
 
-var CartItem = React.createClass({
+let CartItem = React.createClass({
 
   mixins: [
     Fluxxor.FluxMixin(React)
