@@ -4,7 +4,11 @@ Testing a basic shopping cart with Fluxxor and React
 ## Getting started
 
 ```
+// run watch on jsx files
+npm run watch
+
+// run express server
 npm start
 ```
 
-Open index.html in the browser
+Access http://localhost:8000
