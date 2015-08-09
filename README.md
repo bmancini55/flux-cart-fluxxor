@@ -1,4 +1,4 @@
-# flux-cart
+# flux-cart-fluxxor
 Testing a basic shopping cart with Fluxxor and React
 
 ## Getting started
