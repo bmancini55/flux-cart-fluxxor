@@ -13,7 +13,8 @@ var CartItem = React.createClass({
   },
 
   render: function() {
-    var item = this.props.item;
+    let item = this.props.item;
+    let qty  = this.props.item.qty;
     return (
       <div className="cart-item">
         <table className="cart-item-container">
@@ -40,7 +41,13 @@ var CartItem = React.createClass({
                     </div>
                     <div className="cart-item-info cart-item-price">
                       <div className="info-label">Price</div>
-                      <div className="info-value">{item.price}</div>
+                      <div className="info-value">${item.price}</div>
+                    </div>
+                    <div className="cart-item-info cart-item-qty">
+                      <div className="info-label">Qty</div>
+                      <div className="info-value">
+                        <input type="text" defaultValue={qty} onBlur={this.onQtyBlur} />
+                      </div>
                     </div>
                   </td>
                 </tr>
@@ -54,6 +61,15 @@ var CartItem = React.createClass({
 
   onRemoveClick: function() {
     this.getFlux().actions.cart.removeItem(this.props.item.id);
+  },
+
+  onQtyBlur: function(e) {
+    let value = parseInt(e.target.value);
+    if(!isNaN(value)) {
+      this.getFlux().actions.cart.updateQty(this.props.item.id, value);
+    } else {
+      this.forceUpdate();
+    }
   }
 
 });

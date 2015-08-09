@@ -56,6 +56,14 @@ let CartPopover = React.createClass({
               <div className="cart-popover-content">
                 <CartList cart={cart} />
               </div>
+              <div className="cart-popover-footer">
+                {() => {
+                  if(cart.qty > 0) {
+                    return <p>Subtotal: ${cart.subtotal}</p>;
+                  }
+                  else return '';
+                }()}
+              </div>
             </div>
           </Overlay>
         </div>
